@@ -1,6 +1,6 @@
-<li class="flex w-full p-1 hover:bg-gray-50">
+<li drag-item draggable="true" class="flex w-full p-2 cursor-pointer hover:bg-gray-50">
     <button wire:click="toggle()" class="flex focus:outline-none items-center justify-center object-center w-6 h-6 p-1 text-xs text-white
-        @if ($item->completed_at) bg-blue-500 @else bg-blue-100 @endif
+        @if ($item->completed_at) bg-blue-600 @else bg-blue-100 @endif
         rounded-full hover:bg-blue-200">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
