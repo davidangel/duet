@@ -8,7 +8,7 @@
                             <button wire:click="delete({{ $list->id }})"
                                 class="flex items-center justify-center object-center w-6 h-6 p-2 text-sm text-white bg-red-300 rounded-full focus:outline-none hover:bg-red-500">x</button>
                         </div>
-                        <ul drag-group>
+                        <ul wire:sortable="updateTaskOrder">
                             @foreach ($list->items()->get() as $item)
                                 <livewire:todo-item :item="$item" :key="$item->id" />
                             @endforeach

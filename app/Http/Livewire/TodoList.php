@@ -14,6 +14,10 @@ class TodoList extends Component
     public $newItemTitle;
     protected $listeners = ['itemDeleted' => 'render', 'itemToggled' => 'render'];
 
+    public function updateTaskOrder($reorderedItems) {
+        //dd($reorderedItems);
+    }
+
     public function createTodoItem()
     {
         $item = new TodoItem();

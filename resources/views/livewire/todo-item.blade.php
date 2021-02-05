@@ -1,4 +1,5 @@
-<li drag-item draggable="true" class="flex w-full p-2 cursor-pointer hover:bg-gray-50">
+<li wire:sortable.item="{{ $item->id }}" wire:sortable.handle draggable="true"
+    class="flex w-full p-2 cursor-pointer hover:bg-gray-50">
     <button wire:click="toggle()" class="flex focus:outline-none items-center justify-center object-center w-6 h-6 p-1 text-xs text-white
         @if ($item->completed_at) bg-blue-600 @else bg-blue-100 @endif
         rounded-full hover:bg-blue-200">
@@ -11,5 +12,4 @@
     </div>
     <button wire:click="delete({{ $item->id }})"
         class="flex items-center justify-center object-center w-6 h-6 p-2 text-sm text-white bg-red-300 border-none rounded-full focus:outline-none hover:bg-red-500">x</button>
-
 </li>
