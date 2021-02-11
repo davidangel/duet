@@ -16,6 +16,8 @@ class CreateTodoListsTable extends Migration
         Schema::create('todo_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('title');
+            $table->bigInteger('team_id')->unsigned();
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
             $table->timestamp('completed_at')->nullable();
             $table->timestamps();
         });

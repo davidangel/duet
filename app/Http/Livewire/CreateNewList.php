@@ -14,8 +14,9 @@ class CreateNewList extends Component
     {
         $list = new TodoList;
         $list->title = $this->name;
+        $list->team_id = Auth::user()->currentTeam->id;
         $list->save();
-        $list->owners()->attach(Auth::user());
+        Auth::user()->currentTeam->todoLists()->save($list);
         $this->emit('listAdded');
         $this->name = '';
     }

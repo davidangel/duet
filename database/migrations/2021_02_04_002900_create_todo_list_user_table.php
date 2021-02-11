@@ -13,12 +13,12 @@ class CreateTodoListUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('todo_list_user', function (Blueprint $table) {
+        Schema::create('team_todo_list', function (Blueprint $table) {
+            $table->bigInteger('team_id')->unsigned()->nullable();
+            $table->foreign('team_id')->references('id')->on('teams')->onDelete('cascade');
+
             $table->bigInteger('todo_list_id')->unsigned()->nullable();
             $table->foreign('todo_list_id')->references('id')->on('todo_lists')->onDelete('cascade');
-
-            $table->bigInteger('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

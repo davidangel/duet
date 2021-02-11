@@ -16,4 +16,8 @@ class TodoList extends Model
     public function owners() {
         return $this->BelongsToMany(User::class);
     }
+
+    public function team() {
+        return $this->belongsTo(Team::class);
+    }
 }

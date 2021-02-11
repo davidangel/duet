@@ -41,4 +41,8 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    public function todoLists() {
+        return $this->belongsToMany(TodoList::class);
+    }
 }

@@ -14,7 +14,7 @@ class TodoLists extends Component
 
     public function lists()
     {
-        return Auth::user()->todoLists()->get();
+        return Auth::user()->currentTeam->todoLists()->get();
     }
 
     public function render()
