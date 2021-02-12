@@ -1,15 +1,14 @@
 <li wire:sortable.item="{{ $item->id }}" wire:sortable.handle draggable="true"
-    class="flex w-full p-2 cursor-pointer hover:bg-gray-50">
-    <button wire:click="toggle()" class="flex focus:outline-none items-center justify-center object-center w-6 h-6 p-1 text-xs text-white
-        @if ($item->completed_at) bg-blue-600 @else bg-blue-100 @endif
-        rounded-full hover:bg-blue-200">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
-    </button>
-    <div class="w-full mx-2">
-        {{ $item->title }}
-    </div>
-    <button wire:click="delete({{ $item->id }})"
-        class="flex items-center justify-center object-center w-6 h-6 p-2 text-sm text-white bg-red-300 border-none rounded-full focus:outline-none hover:bg-red-500">x</button>
+  class="flex items-center justify-center w-full p-2 cursor-pointer hover:bg-gray-50">
+  <input type="checkbox" wire:click="toggle()" @if ($item->completed_at) checked @endif />
+  <div class="flex items-center justify-between w-full mx-2">
+    <div>{{ $item->title }}</div>
+    @if ($item->completed_at)
+      <div class="text-sm text-gray-500">
+        completed {{ \Carbon\Carbon::createFromTimeStamp(strtotime($item->completed_at))->diffForHumans() }}
+      </div>
+    @endif
+  </div>
+  <button wire:click="delete({{ $item->id }})"
+    class="flex items-center justify-center object-center w-6 h-6 p-2 text-sm text-white bg-red-300 border-none rounded-full focus:outline-none hover:bg-red-500">x</button>
 </li>

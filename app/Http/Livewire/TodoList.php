@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\TodoItem;
 use App\Models\TodoList as ModelsTodoList;
-use Carbon\Carbon;
 use Livewire\Component;
 
 class TodoList extends Component
@@ -12,6 +11,7 @@ class TodoList extends Component
 
     public $list;
     public $newItemTitle;
+    public $showCompleted = false;
     protected $listeners = ['itemDeleted' => 'render', 'itemToggled' => 'render'];
 
     public function updateTaskOrder($reorderedItems) {
@@ -31,6 +31,10 @@ class TodoList extends Component
     {
         ModelsTodoList::destroy($id);
         $this->emit('listDeleted');
+    }
+
+    public function toggleShowCompleted() {
+        $this->showCompleted = !$this->showCompleted;
     }
 
 
