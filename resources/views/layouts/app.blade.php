@@ -14,6 +14,10 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+
   @livewireStyles
 </head>
 
