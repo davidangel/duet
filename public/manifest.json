@@ -58,6 +58,6 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/?launcher=true",
+  "start_url": "/dashboard?launcher=true",
   "display": "standalone"
 }
