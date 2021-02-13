@@ -15,7 +15,11 @@ class TodoList extends Component
     protected $listeners = ['itemDeleted' => 'render', 'itemToggled' => 'render'];
 
     public function updateTaskOrder($reorderedItems) {
-        //dd($reorderedItems);
+        array_map(function($item) {
+            $todo = TodoItem::find($item['value']);
+            $todo->order = $item['order'];
+            $todo->save();
+        }, $reorderedItems);
     }
 
     public function createTodoItem()
