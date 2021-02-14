@@ -10,6 +10,16 @@ class TodoItem extends Component
 {
     public $item;
 
+    protected $rules = [
+        'item.title' => 'required|string|min:1'
+    ];
+
+    public function save()
+    {
+        $this->validate();
+        $this->item->save();
+    }
+
     public function toggle()
     {
         $this->item->completed_at = $this->item->completed_at ? null : Carbon::now();
