@@ -1,0 +1,55 @@
+"A date string with format `Y-m-d`, e.g. `2011-05-23`."
+scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
+
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+type Query {
+    users: [User!]! @paginate(defaultCount: 10)
+    user(id: ID @eq): User @find
+    
+    todolists: [TodoList!]! @paginate(defaultCount: 10)
+    todolist(id: ID @eq): TodoList @find
+    
+    todoitems: [TodoItem!]! @paginate(defaultCount: 10)
+    todoitem(id: ID @eq): TodoItem @find
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type Team {
+    id: ID!
+    user_id: Int!
+    name: String!
+    personal_team: Boolean!
+    created_at: DateTime!
+    updated_at: DateTime!
+}
+
+type TodoList {
+    id: ID!
+    title: String!
+    team_id: Int!
+    completed_at: DateTime!
+    created_at: DateTime!
+    updated_at: DateTime!
+    items: TodoItem @hasMany
+    owners: User @belongsToMany
+    team: Team @belongsTo
+}
+
+type TodoItem {
+    id: ID!
+    title: String!
+    todo_list_id: Int!
+    completed_at: DateTime!
+    created_at: DateTime!
+    updated_at: DateTime!
+    list: TodoList @belongsTo
+}
